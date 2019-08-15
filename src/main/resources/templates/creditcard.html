@@ -4,6 +4,25 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="base::header">
+    <script>
+        function checkInput() {
+            var form = document.getElementById("creditcardnumber");
+            var val = form.value;
+            if (val.length > 4 && val.charAt(4) !== '-') {
+                val = val.substring(0,4) + '-' + val.substring(4);
+            }
+            if (val.length > 9 && val.charAt(9) !== '-') {
+                val = val.substring(0,9) + '-' + val.substring(9);
+            }
+            if (val.length > 14 && val.charAt(14) !== '-') {
+                val = val.substring(0,14) + '-' + val.substring(14);
+            }
+            if (val.length > 19) {
+                val = val.substring(0, 19)
+            }
+            form.value = val;
+        }
+    </script>
 <body style="background-image: url('https://images4.alphacoders.com/528/thumb-1920-52896.jpg'); background-repeat: no-repeat; background-size: cover;">
 <div th:replace="base::nav"></div><br>
 <div class="container">
